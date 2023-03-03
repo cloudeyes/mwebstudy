@@ -1,0 +1,44 @@
+plugins {
+	id 'java'
+	id 'war'
+	id 'org.springframework.boot' version '3.0.3'
+	id 'io.spring.dependency-management' version '1.1.0'
+}
+
+group = 'com.sec.mwebstudy'
+version = '0.0.1-SNAPSHOT'
+sourceCompatibility = '17'
+
+repositories {
+	mavenCentral()
+}
+
+dependencies {
+	implementation 'org.springframework.boot:spring-boot-starter-web'
+	providedRuntime 'org.springframework.boot:spring-boot-starter-tomcat'
+	testImplementation 'org.springframework.boot:spring-boot-starter-test'
+
+	// MyBatis 연동을 위한 의존성 추가
+	implementation 'com.baomidou:mybatis-plus-boot-starter:3.5.3'
+	implementation 'org.projectlombok:lombok:1.18.24'
+	implementation 'org.xerial:sqlite-jdbc:3.39.4.1'
+}
+
+tasks.named('test') {
+	useJUnitPlatform()
+}
+
+// 출력 결과가 컬러로 표시되도록 하여 시안성을 높입니다.
+bootRun {
+    jvmArgs = ["-Dspring.output.ansi.enabled=ALWAYS"]
+}
+
+// continuous 모드(`-t)로 자동 Reload 될 때마다 화면을 지웁니다.
+gradle.addListener new BuildAdapter() {
+    void projectsEvaluated(Gradle gradle) {
+        if (gradle.startParameter.continuous) {
+            System.out.print("\033[H\033[2J");
+            System.out.flush();
+        }
+    }
+}

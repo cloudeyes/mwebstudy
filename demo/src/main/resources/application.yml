@@ -1,0 +1,12 @@
+spring:
+  datasource:
+    driver-class-name: org.sqlite.JDBC
+    url: jdbc:sqlite::resource:test.db
+    username:
+    password:
+
+# Logger Config
+logging:
+  level:
+    com.sec.mwebstudy.demo: debug
+
