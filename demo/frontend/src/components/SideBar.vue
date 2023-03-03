@@ -13,6 +13,7 @@
           <v-text-field
             variant="underlined"
             label="맛집 이름을 입력해주세요."
+            v-model="review.title"
           />
         </div>
         <div class="image-area">
@@ -22,11 +23,11 @@
           <v-text-field
             variant="underlined"
             label="위치 정보 직접 입력하기"
-            :model-value="store.state.address"
+            v-model="review.address"
           />
         </div>
         <div class="rate-area">
-          <v-rating color="yellow" />
+          <v-rating color="yellow" v-model="review.grade" />
         </div>
         <v-textarea
           class="review-area"
@@ -34,7 +35,11 @@
           label="후기를 입력해주세요."
           variant="underlined"
           hide-details
+          v-model="review.comment"
         />
+        <div class="footer-area">
+          <v-btn class="post-btn" @click="onPostReview">저장</v-btn>
+        </div>
       </div>
     </VueResizable>
     <v-btn variant="text" class="side-bar-active-btn" @click="showSideBar">
@@ -53,8 +58,21 @@ const store = useStore();
 
 const isVisibleSideBar = ref(true);
 
+type ReviewForm = {
+  title?: string;
+  address?: string;
+  grade?: number;
+  comment?: string;
+};
+const review = ref<ReviewForm>({} as ReviewForm);
+
 const showSideBar = () => {
   isVisibleSideBar.value = !isVisibleSideBar.value;
+};
+
+const onPostReview = () => {
+  //
+  alert(JSON.stringify(review.value));
 };
 </script>
 
@@ -125,7 +143,7 @@ const showSideBar = () => {
         padding-left: 6px;
         padding-right: 6px;
         & > div {
-          height: calc(100vh - 480px);
+          height: calc(100vh - 500px);
         }
 
         textarea {
@@ -135,6 +153,14 @@ const showSideBar = () => {
         textarea::placeholder {
           color: white;
           opacity: 0.9;
+        }
+      }
+
+      > .footer-area {
+        padding: 4px;
+        text-align: center;
+        .post-btn {
+          background-color: rgba(255, 170, 0, 0.5);
         }
       }
     }
