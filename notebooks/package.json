@@ -12,7 +12,9 @@
   "dependencies": {
     "@ffmpeg/core": "^0.11.0",
     "@ffmpeg/ffmpeg": "^0.11.6",
+    "chatgpt": "^5.0.9",
     "stream-to-array": "^2.3.0",
+    "tslab-plotly": "^2.0.4",
     "ytdl-core": "^4.11.2"
   }
 }
