@@ -1,14 +1,14 @@
 package com.sec.mwebstudy.demo;
 
-import org.junit.jupiter.api.Test;
-import org.junit.jupiter.api.Assertions;
-import org.springframework.boot.test.context.SpringBootTest;
-import org.springframework.beans.factory.annotation.Autowired;
-
-import com.sec.mwebstudy.demo.mapper.UserMapper;
-import com.sec.mwebstudy.demo.entity.User;
-
 import java.util.List;
+
+import org.junit.jupiter.api.Assertions;
+import org.junit.jupiter.api.Test;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.test.context.SpringBootTest;
+
+import com.sec.mwebstudy.demo.entity.User;
+import com.sec.mwebstudy.demo.mapper.UserMapper;
 
 @SpringBootTest
 class DemoApplicationTests {
